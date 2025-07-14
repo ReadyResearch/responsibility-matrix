@@ -166,6 +166,19 @@
             font-size: 12px;
         }
         
+        .legend-item input[type="checkbox"] {
+            margin: 0;
+            cursor: pointer;
+        }
+        
+        .legend-item label {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            cursor: pointer;
+            user-select: none;
+        }
+        
         .legend-color {
             width: 16px;
             height: 16px;
@@ -273,13 +286,11 @@
             line-height: 1.4;
         }
         
-        /* Adjust positioning for tooltips that would go off-screen */
         .risk-definition-tooltip:hover .definition-content {
             visibility: visible;
             opacity: 1;
         }
         
-        /* Right-aligned tooltip for items near the right edge */
         .risk-definition-tooltip.align-right .definition-content {
             left: auto;
             right: 0;
@@ -293,7 +304,6 @@
             margin-right: -5px;
         }
         
-        /* Left-aligned tooltip for items near the left edge */
         .risk-definition-tooltip.align-left .definition-content {
             left: 0;
             right: auto;
@@ -329,6 +339,55 @@
             cursor: pointer;
             width: 25%;
         }
+        
+        /* Cell filtering styles - high specificity to override existing colors */
+        .responsibility-table td.responsibility-cell.cell-filtered,
+        .responsibility-table .responsibility-cell.cell-filtered,
+        td.responsibility-cell.cell-filtered,
+        .responsibility-cell.cell-filtered {
+            background-color: #f0f0f0 !important;
+            color: #f0f0f0 !important;
+        }
+        
+        /* Override all specific responsibility level classes when filtered */
+        .responsibility-cell.cell-filtered.no-responsibility,
+        .responsibility-cell.cell-filtered.limited-responsibility,
+        .responsibility-cell.cell-filtered.shared-responsibility,
+        .responsibility-cell.cell-filtered.significant-responsibility,
+        .responsibility-cell.cell-filtered.primary-responsibility,
+        td.responsibility-cell.cell-filtered.no-responsibility,
+        td.responsibility-cell.cell-filtered.limited-responsibility,
+        td.responsibility-cell.cell-filtered.shared-responsibility,
+        td.responsibility-cell.cell-filtered.significant-responsibility,
+        td.responsibility-cell.cell-filtered.primary-responsibility {
+            background-color: #f0f0f0 !important;
+            color: #f0f0f0 !important;
+        }
+        
+        /* Override subdomain-specific responsibility level classes when filtered */
+        .risk-item .responsibility-cell.cell-filtered.no-responsibility,
+        .risk-item .responsibility-cell.cell-filtered.limited-responsibility,
+        .risk-item .responsibility-cell.cell-filtered.shared-responsibility,
+        .risk-item .responsibility-cell.cell-filtered.significant-responsibility,
+        .risk-item .responsibility-cell.cell-filtered.primary-responsibility,
+        tr.risk-item .responsibility-cell.cell-filtered.no-responsibility,
+        tr.risk-item .responsibility-cell.cell-filtered.limited-responsibility,
+        tr.risk-item .responsibility-cell.cell-filtered.shared-responsibility,
+        tr.risk-item .responsibility-cell.cell-filtered.significant-responsibility,
+        tr.risk-item .responsibility-cell.cell-filtered.primary-responsibility,
+        .risk-item td.responsibility-cell.cell-filtered.no-responsibility,
+        .risk-item td.responsibility-cell.cell-filtered.limited-responsibility,
+        .risk-item td.responsibility-cell.cell-filtered.shared-responsibility,
+        .risk-item td.responsibility-cell.cell-filtered.significant-responsibility,
+        .risk-item td.responsibility-cell.cell-filtered.primary-responsibility,
+        tr.risk-item td.responsibility-cell.cell-filtered.no-responsibility,
+        tr.risk-item td.responsibility-cell.cell-filtered.limited-responsibility,
+        tr.risk-item td.responsibility-cell.cell-filtered.shared-responsibility,
+        tr.risk-item td.responsibility-cell.cell-filtered.significant-responsibility,
+        tr.risk-item td.responsibility-cell.cell-filtered.primary-responsibility {
+            background-color: #f0f0f0 !important;
+            color: #f0f0f0 !important;
+        }
     </style>
 </head>
 <body>
@@ -348,27 +407,42 @@
         </div>
         
         <div class="legend">
-            <div class="legend-title">Actor Responsibility:</div>
+            <div class="legend-title">Show Responsibility Levels:</div>
             <div class="legend-items">
                 <div class="legend-item">
-                    <div class="legend-color no-responsibility"></div>
-                    <span>No responsibility</span>
+                    <input type="checkbox" id="no-responsibility" checked onchange="filterByResponsibilityLevel()">
+                    <label for="no-responsibility">
+                        <div class="legend-color no-responsibility"></div>
+                        <span>No responsibility</span>
+                    </label>
                 </div>
                 <div class="legend-item">
-                    <div class="legend-color limited-responsibility"></div>
-                    <span>Limited responsibility</span>
+                    <input type="checkbox" id="limited-responsibility" checked onchange="filterByResponsibilityLevel()">
+                    <label for="limited-responsibility">
+                        <div class="legend-color limited-responsibility"></div>
+                        <span>Limited responsibility</span>
+                    </label>
                 </div>
                 <div class="legend-item">
-                    <div class="legend-color shared-responsibility"></div>
-                    <span>Shared responsibility</span>
+                    <input type="checkbox" id="shared-responsibility" checked onchange="filterByResponsibilityLevel()">
+                    <label for="shared-responsibility">
+                        <div class="legend-color shared-responsibility"></div>
+                        <span>Shared responsibility</span>
+                    </label>
                 </div>
                 <div class="legend-item">
-                    <div class="legend-color significant-responsibility"></div>
-                    <span>Significant responsibility</span>
+                    <input type="checkbox" id="significant-responsibility" checked onchange="filterByResponsibilityLevel()">
+                    <label for="significant-responsibility">
+                        <div class="legend-color significant-responsibility"></div>
+                        <span>Significant responsibility</span>
+                    </label>
                 </div>
                 <div class="legend-item">
-                    <div class="legend-color primary-responsibility"></div>
-                    <span>Primary responsibility</span>
+                    <input type="checkbox" id="primary-responsibility" checked onchange="filterByResponsibilityLevel()">
+                    <label for="primary-responsibility">
+                        <div class="legend-color primary-responsibility"></div>
+                        <span>Primary responsibility</span>
+                    </label>
                 </div>
             </div>
         </div>
@@ -739,6 +813,37 @@
             });
         }
 
+        function filterByResponsibilityLevel() {
+            const checkboxes = {
+                'no-responsibility': document.getElementById('no-responsibility').checked,
+                'limited-responsibility': document.getElementById('limited-responsibility').checked,
+                'shared-responsibility': document.getElementById('shared-responsibility').checked,
+                'significant-responsibility': document.getElementById('significant-responsibility').checked,
+                'primary-responsibility': document.getElementById('primary-responsibility').checked
+            };
+            
+            // Get all responsibility cells
+            const responsibilityCells = document.querySelectorAll('.responsibility-cell');
+            
+            responsibilityCells.forEach(cell => {
+                let shouldShow = false;
+                
+                // Check if this cell's responsibility level is selected
+                Object.keys(checkboxes).forEach(responsibilityLevel => {
+                    if (cell.classList.contains(responsibilityLevel) && checkboxes[responsibilityLevel]) {
+                        shouldShow = true;
+                    }
+                });
+                
+                // Apply or remove the filtered styling
+                if (shouldShow) {
+                    cell.classList.remove('cell-filtered');
+                } else {
+                    cell.classList.add('cell-filtered');
+                }
+            });
+        }
+
         function generateResponsibilityData(responsibilityLevel) {
             const totalExperts = Math.floor(Math.random() * 15) + 20;
             let responses = {
@@ -804,7 +909,8 @@
                 if (cell.querySelector('.tooltip-content')) return;
                 
                 let responsibilityLevel = '';
-                if (cell.classList.contains('limited-responsibility')) responsibilityLevel = 'limited-responsibility';
+                if (cell.classList.contains('no-responsibility')) responsibilityLevel = 'no-responsibility';
+                else if (cell.classList.contains('limited-responsibility')) responsibilityLevel = 'limited-responsibility';
                 else if (cell.classList.contains('shared-responsibility')) responsibilityLevel = 'shared-responsibility';
                 else if (cell.classList.contains('significant-responsibility')) responsibilityLevel = 'significant-responsibility';
                 else if (cell.classList.contains('primary-responsibility')) responsibilityLevel = 'primary-responsibility';
