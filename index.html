@@ -20,7 +20,7 @@
             border-radius: 8px;
             overflow: hidden;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
         }
         
@@ -251,7 +251,7 @@
             font-weight: bold;
             font-size: 10px;
             text-align: center;
-            width: 25%;
+            width: 20%;
         }
         
         .risk-domain-header {
@@ -265,7 +265,7 @@
             cursor: pointer;
             transition: background-color 0.2s;
             font-size: 11px;
-            width: 25%;
+            width: 20%;
         }
         
         .risk-domain-header:hover {
@@ -383,7 +383,7 @@
             text-align: center;
             vertical-align: middle;
             cursor: pointer;
-            width: 25%;
+            width: 20%;
             position: relative;
         }
         
@@ -468,9 +468,10 @@
         <div class="controls">
             <select id="actorFilter" onchange="filterActor()">
                 <option value="">All Actors</option>
-                <option value="1">AI Developers & Service Providers</option>
-                <option value="2">AI Adopters & Consumers</option>
-                <option value="3">AI Governance Stakeholders</option>
+                <option value="1">AI Developer (General-Purpose AI)</option>
+                <option value="2">AI Developer (Specialized AI)</option>
+                <option value="3">AI Deployer</option>
+                <option value="4">AI Governance Actor</option>
             </select>
         </div>
         
@@ -539,9 +540,10 @@
             <thead>
                 <tr>
                     <th class="risk-domain-header">RISK DOMAIN</th>
-                    <th class="actor-header">AI DEVELOPERS & SERVICE PROVIDERS</th>
-                    <th class="actor-header">AI ADOPTERS & CONSUMERS</th>
-                    <th class="actor-header">AI GOVERNANCE STAKEHOLDERS</th>
+                    <th class="actor-header">AI DEVELOPER<br>(GENERAL-PURPOSE AI)</th>
+                    <th class="actor-header">AI DEVELOPER<br>(SPECIALIZED AI)</th>
+                    <th class="actor-header">AI DEPLOYER</th>
+                    <th class="actor-header">AI GOVERNANCE<br>ACTOR</th>
                 </tr>
             </thead>
             <tbody>
@@ -550,6 +552,10 @@
                     <td class="risk-domain-header expanded" onclick="toggleDomain('domain1')">1. DISCRIMINATION & TOXICITY</td>
                     <td class="responsibility-cell primary-responsibility" data-evidence="consensus">
                         Primary responsibility
+                        <div class="cell-evidence-icon evidence-consensus">✓</div>
+                    </td>
+                    <td class="responsibility-cell significant-responsibility" data-evidence="consensus">
+                        Significant responsibility
                         <div class="cell-evidence-icon evidence-consensus">✓</div>
                     </td>
                     <td class="responsibility-cell significant-responsibility" data-evidence="no-consensus">
@@ -572,6 +578,10 @@
                         Primary responsibility
                         <div class="cell-evidence-icon evidence-consensus">✓</div>
                     </td>
+                    <td class="responsibility-cell significant-responsibility" data-evidence="consensus">
+                        Significant responsibility
+                        <div class="cell-evidence-icon evidence-consensus">✓</div>
+                    </td>
                     <td class="responsibility-cell limited-responsibility" data-evidence="no-consensus">
                         Limited responsibility
                         <div class="cell-evidence-icon evidence-no-consensus">~</div>
@@ -587,6 +597,10 @@
                             <div class="definition-header">1.2 Exposure to toxic content</div>
                             AI exposing users to harmful, abusive, unsafe or inappropriate content. May involve AI creating, describing, providing advice, or encouraging action. Examples of toxic content include hate-speech, violence, extremism, illegal acts, child sexual abuse material, as well as content that violates community norms such as profanity, inflammatory political speech, or pornography.
                         </div>
+                    </td>
+                    <td class="responsibility-cell significant-responsibility" data-evidence="no-consensus">
+                        Significant responsibility
+                        <div class="cell-evidence-icon evidence-no-consensus">~</div>
                     </td>
                     <td class="responsibility-cell significant-responsibility" data-evidence="no-consensus">
                         Significant responsibility
@@ -612,6 +626,10 @@
                         Primary responsibility
                         <div class="cell-evidence-icon evidence-consensus">✓</div>
                     </td>
+                    <td class="responsibility-cell significant-responsibility" data-evidence="consensus">
+                        Significant responsibility
+                        <div class="cell-evidence-icon evidence-consensus">✓</div>
+                    </td>
                     <td class="responsibility-cell shared-responsibility" data-evidence="no-consensus">
                         Shared responsibility
                         <div class="cell-evidence-icon evidence-no-consensus">~</div>
@@ -625,6 +643,10 @@
                 <!-- Domain 2: Privacy & Security -->
                 <tr>
                     <td class="risk-domain-header expanded" onclick="toggleDomain('domain2')">2. PRIVACY & SECURITY</td>
+                    <td class="responsibility-cell significant-responsibility" data-evidence="consensus">
+                        Significant responsibility
+                        <div class="cell-evidence-icon evidence-consensus">✓</div>
+                    </td>
                     <td class="responsibility-cell primary-responsibility" data-evidence="consensus">
                         Primary responsibility
                         <div class="cell-evidence-icon evidence-consensus">✓</div>
@@ -644,6 +666,10 @@
                             <div class="definition-header">2.1 Compromise of privacy</div>
                             AI systems that memorize and leak sensitive personal data or infer private information about individuals without their consent. Unexpected or unauthorized sharing of data and information can compromise user expectation of privacy, assist identity theft, or loss of confidential intellectual property.
                         </div>
+                    </td>
+                    <td class="responsibility-cell significant-responsibility" data-evidence="consensus">
+                        Significant responsibility
+                        <div class="cell-evidence-icon evidence-consensus">✓</div>
                     </td>
                     <td class="responsibility-cell primary-responsibility" data-evidence="consensus">
                         Primary responsibility
@@ -669,6 +695,10 @@
                         Shared responsibility
                         <div class="cell-evidence-icon evidence-no-consensus">~</div>
                     </td>
+                    <td class="responsibility-cell shared-responsibility" data-evidence="no-consensus">
+                        Shared responsibility
+                        <div class="cell-evidence-icon evidence-no-consensus">~</div>
+                    </td>
                     <td class="responsibility-cell limited-responsibility" data-evidence="insufficient">
                         Limited responsibility
                         <div class="cell-evidence-icon evidence-insufficient">!</div>
@@ -682,6 +712,10 @@
                 <!-- Domain 3: Misinformation -->
                 <tr>
                     <td class="risk-domain-header expanded" onclick="toggleDomain('domain3')">3. MISINFORMATION</td>
+                    <td class="responsibility-cell significant-responsibility" data-evidence="no-consensus">
+                        Significant responsibility
+                        <div class="cell-evidence-icon evidence-no-consensus">~</div>
+                    </td>
                     <td class="responsibility-cell primary-responsibility" data-evidence="no-consensus">
                         Primary responsibility
                         <div class="cell-evidence-icon evidence-no-consensus">~</div>
@@ -706,6 +740,10 @@
                         Significant responsibility
                         <div class="cell-evidence-icon evidence-consensus">✓</div>
                     </td>
+                    <td class="responsibility-cell significant-responsibility" data-evidence="consensus">
+                        Significant responsibility
+                        <div class="cell-evidence-icon evidence-consensus">✓</div>
+                    </td>
                     <td class="responsibility-cell primary-responsibility" data-evidence="no-consensus">
                         Primary responsibility
                         <div class="cell-evidence-icon evidence-no-consensus">~</div>
@@ -715,7 +753,7 @@
                         <div class="cell-evidence-icon evidence-no-consensus">~</div>
                     </td>
                 </tr>
-                <tr class="risk-item domain3-item">
+                                <tr class="risk-item domain3-item">
                     <td class="risk-item risk-definition-tooltip">3.2 Pollution of information ecosystem and loss of consensus reality
                         <div class="definition-content">
                             <div class="definition-header">3.2 Pollution of information ecosystem</div>
@@ -730,6 +768,10 @@
                         Shared responsibility
                         <div class="cell-evidence-icon evidence-no-consensus">~</div>
                     </td>
+                    <td class="responsibility-cell shared-responsibility" data-evidence="no-consensus">
+                        Shared responsibility
+                        <div class="cell-evidence-icon evidence-no-consensus">~</div>
+                    </td>
                     <td class="responsibility-cell primary-responsibility" data-evidence="consensus">
                         Primary responsibility
                         <div class="cell-evidence-icon evidence-consensus">✓</div>
@@ -739,6 +781,10 @@
                 <!-- Domain 4: Malicious Actors -->
                 <tr>
                     <td class="risk-domain-header expanded" onclick="toggleDomain('domain4')">4. MALICIOUS ACTORS</td>
+                    <td class="responsibility-cell shared-responsibility" data-evidence="no-consensus">
+                        Shared responsibility
+                        <div class="cell-evidence-icon evidence-no-consensus">~</div>
+                    </td>
                     <td class="responsibility-cell significant-responsibility" data-evidence="no-consensus">
                         Significant responsibility
                         <div class="cell-evidence-icon evidence-no-consensus">~</div>
@@ -763,6 +809,10 @@
                         Limited responsibility
                         <div class="cell-evidence-icon evidence-no-consensus">~</div>
                     </td>
+                    <td class="responsibility-cell shared-responsibility" data-evidence="no-consensus">
+                        Shared responsibility
+                        <div class="cell-evidence-icon evidence-no-consensus">~</div>
+                    </td>
                     <td class="responsibility-cell significant-responsibility" data-evidence="no-consensus">
                         Significant responsibility
                         <div class="cell-evidence-icon evidence-no-consensus">~</div>
@@ -778,6 +828,10 @@
                             <div class="definition-header">4.2 Cyberattacks, weapon development or use, and mass harm</div>
                             Using AI systems to develop cyber weapons (e.g., coding cheaper, more effective malware), develop new or enhance existing weapons (e.g., Lethal Autonomous Weapons or CBRNE), or use weapons to cause mass harm.
                         </div>
+                    </td>
+                    <td class="responsibility-cell shared-responsibility" data-evidence="insufficient">
+                        Shared responsibility
+                        <div class="cell-evidence-icon evidence-insufficient">!</div>
                     </td>
                     <td class="responsibility-cell shared-responsibility" data-evidence="insufficient">
                         Shared responsibility
@@ -799,6 +853,10 @@
                             Using AI systems to gain a personal advantage over others such as through cheating, fraud, scams, blackmail or targeted manipulation of beliefs or behavior. Examples include AI-facilitated plagiarism for research or education, impersonating a trusted or fake individual for illegitimate financial benefit, or creating humiliating or sexual imagery.
                         </div>
                     </td>
+                    <td class="responsibility-cell significant-responsibility" data-evidence="consensus">
+                        Significant responsibility
+                        <div class="cell-evidence-icon evidence-consensus">✓</div>
+                    </td>
                     <td class="responsibility-cell primary-responsibility" data-evidence="consensus">
                         Primary responsibility
                         <div class="cell-evidence-icon evidence-consensus">✓</div>
@@ -816,6 +874,10 @@
                 <!-- Domain 5: Human-Computer Interaction -->
                 <tr>
                     <td class="risk-domain-header expanded" onclick="toggleDomain('domain5')">5. HUMAN-COMPUTER INTERACTION</td>
+                    <td class="responsibility-cell shared-responsibility" data-evidence="no-consensus">
+                        Shared responsibility
+                        <div class="cell-evidence-icon evidence-no-consensus">~</div>
+                    </td>
                     <td class="responsibility-cell significant-responsibility" data-evidence="no-consensus">
                         Significant responsibility
                         <div class="cell-evidence-icon evidence-no-consensus">~</div>
@@ -840,6 +902,10 @@
                         Limited responsibility
                         <div class="cell-evidence-icon evidence-insufficient">!</div>
                     </td>
+                    <td class="responsibility-cell shared-responsibility" data-evidence="insufficient">
+                        Shared responsibility
+                        <div class="cell-evidence-icon evidence-insufficient">!</div>
+                    </td>
                     <td class="responsibility-cell primary-responsibility" data-evidence="consensus">
                         Primary responsibility
                         <div class="cell-evidence-icon evidence-consensus">✓</div>
@@ -860,6 +926,10 @@
                         Shared responsibility
                         <div class="cell-evidence-icon evidence-no-consensus">~</div>
                     </td>
+                    <td class="responsibility-cell shared-responsibility" data-evidence="no-consensus">
+                        Shared responsibility
+                        <div class="cell-evidence-icon evidence-no-consensus">~</div>
+                    </td>
                     <td class="responsibility-cell significant-responsibility" data-evidence="no-consensus">
                         Significant responsibility
                         <div class="cell-evidence-icon evidence-no-consensus">~</div>
@@ -873,6 +943,10 @@
                 <!-- Domain 6: Socioeconomic & Environmental -->
                 <tr>
                     <td class="risk-domain-header expanded" onclick="toggleDomain('domain6')">6. SOCIOECONOMIC & ENVIRONMENTAL</td>
+                    <td class="responsibility-cell shared-responsibility" data-evidence="no-consensus">
+                        Shared responsibility
+                        <div class="cell-evidence-icon evidence-no-consensus">~</div>
+                    </td>
                     <td class="responsibility-cell shared-responsibility" data-evidence="no-consensus">
                         Shared responsibility
                         <div class="cell-evidence-icon evidence-no-consensus">~</div>
@@ -897,6 +971,10 @@
                         Limited responsibility
                         <div class="cell-evidence-icon evidence-no-consensus">~</div>
                     </td>
+                    <td class="responsibility-cell limited-responsibility" data-evidence="no-consensus">
+                        Limited responsibility
+                        <div class="cell-evidence-icon evidence-no-consensus">~</div>
+                    </td>
                     <td class="responsibility-cell shared-responsibility" data-evidence="insufficient">
                         Shared responsibility
                         <div class="cell-evidence-icon evidence-insufficient">!</div>
@@ -912,6 +990,10 @@
                             <div class="definition-header">6.2 Increased inequality and decline in employment quality</div>
                             Widespread use of AI increasing social and economic inequalities, such as by automating jobs, reducing the quality of employment, or producing exploitative dependencies between workers and their employers.
                         </div>
+                    </td>
+                    <td class="responsibility-cell shared-responsibility" data-evidence="no-consensus">
+                        Shared responsibility
+                        <div class="cell-evidence-icon evidence-no-consensus">~</div>
                     </td>
                     <td class="responsibility-cell significant-responsibility" data-evidence="no-consensus">
                         Significant responsibility
@@ -937,6 +1019,10 @@
                         Shared responsibility
                         <div class="cell-evidence-icon evidence-insufficient">!</div>
                     </td>
+                    <td class="responsibility-cell shared-responsibility" data-evidence="insufficient">
+                        Shared responsibility
+                        <div class="cell-evidence-icon evidence-insufficient">!</div>
+                    </td>
                     <td class="responsibility-cell limited-responsibility" data-evidence="no-consensus">
                         Limited responsibility
                         <div class="cell-evidence-icon evidence-no-consensus">~</div>
@@ -957,6 +1043,10 @@
                         Primary responsibility
                         <div class="cell-evidence-icon evidence-consensus">✓</div>
                     </td>
+                    <td class="responsibility-cell significant-responsibility" data-evidence="consensus">
+                        Significant responsibility
+                        <div class="cell-evidence-icon evidence-consensus">✓</div>
+                    </td>
                     <td class="responsibility-cell significant-responsibility" data-evidence="no-consensus">
                         Significant responsibility
                         <div class="cell-evidence-icon evidence-no-consensus">~</div>
@@ -972,6 +1062,10 @@
                             <div class="definition-header">6.5 Governance failure</div>
                             Inadequate regulatory frameworks and oversight mechanisms failing to keep pace with AI development, leading to ineffective governance and the inability to manage AI risks appropriately.
                         </div>
+                    </td>
+                    <td class="responsibility-cell shared-responsibility" data-evidence="no-consensus">
+                        Shared responsibility
+                        <div class="cell-evidence-icon evidence-no-consensus">~</div>
                     </td>
                     <td class="responsibility-cell shared-responsibility" data-evidence="no-consensus">
                         Shared responsibility
@@ -997,6 +1091,10 @@
                         Primary responsibility
                         <div class="cell-evidence-icon evidence-consensus">✓</div>
                     </td>
+                    <td class="responsibility-cell significant-responsibility" data-evidence="consensus">
+                        Significant responsibility
+                        <div class="cell-evidence-icon evidence-consensus">✓</div>
+                    </td>
                     <td class="responsibility-cell limited-responsibility" data-evidence="no-consensus">
                         Limited responsibility
                         <div class="cell-evidence-icon evidence-no-consensus">~</div>
@@ -1012,6 +1110,10 @@
                     <td class="risk-domain-header expanded" onclick="toggleDomain('domain7')">7. AI SYSTEM SAFETY, FAILURES & LIMITATIONS</td>
                     <td class="responsibility-cell primary-responsibility" data-evidence="consensus">
                         Primary responsibility
+                        <div class="cell-evidence-icon evidence-consensus">✓</div>
+                    </td>
+                    <td class="responsibility-cell significant-responsibility" data-evidence="consensus">
+                        Significant responsibility
                         <div class="cell-evidence-icon evidence-consensus">✓</div>
                     </td>
                     <td class="responsibility-cell shared-responsibility" data-evidence="no-consensus">
@@ -1034,6 +1136,10 @@
                         Primary responsibility
                         <div class="cell-evidence-icon evidence-consensus">✓</div>
                     </td>
+                    <td class="responsibility-cell significant-responsibility" data-evidence="consensus">
+                        Significant responsibility
+                        <div class="cell-evidence-icon evidence-consensus">✓</div>
+                    </td>
                     <td class="responsibility-cell limited-responsibility" data-evidence="insufficient">
                         Limited responsibility
                         <div class="cell-evidence-icon evidence-insufficient">!</div>
@@ -1049,6 +1155,10 @@
                             <div class="definition-header">7.2 AI possessing dangerous capabilities</div>
                             AI systems that develop, access, or are provided with capabilities that increase their potential to cause mass harm through deception, weapons development and acquisition, persuasion and manipulation, political strategy, cyber-offense, AI development, situational awareness, and self-proliferation. These capabilities may cause mass harm due to malicious human actors, misaligned AI systems, or failure in the AI system.
                         </div>
+                    </td>
+                    <td class="responsibility-cell shared-responsibility" data-evidence="consensus">
+                        Shared responsibility
+                        <div class="cell-evidence-icon evidence-consensus">✓</div>
                     </td>
                     <td class="responsibility-cell shared-responsibility" data-evidence="consensus">
                         Shared responsibility
@@ -1078,6 +1188,10 @@
                         Significant responsibility
                         <div class="cell-evidence-icon evidence-consensus">✓</div>
                     </td>
+                    <td class="responsibility-cell significant-responsibility" data-evidence="consensus">
+                        Significant responsibility
+                        <div class="cell-evidence-icon evidence-consensus">✓</div>
+                    </td>
                     <td class="responsibility-cell limited-responsibility" data-evidence="consensus">
                         Limited responsibility
                         <div class="cell-evidence-icon evidence-consensus">✓</div>
@@ -1089,6 +1203,10 @@
                             <div class="definition-header">7.4 Lack of transparency or interpretability</div>
                             Challenges in understanding or explaining the decision-making processes of AI systems, which can lead to mistrust, difficulty in enforcing compliance standards or holding relevant actors accountable for harms, and the inability to identify and correct errors.
                         </div>
+                    </td>
+                    <td class="responsibility-cell significant-responsibility" data-evidence="consensus">
+                        Significant responsibility
+                        <div class="cell-evidence-icon evidence-consensus">✓</div>
                     </td>
                     <td class="responsibility-cell significant-responsibility" data-evidence="consensus">
                         Significant responsibility
@@ -1114,6 +1232,10 @@
                         Limited responsibility
                         <div class="cell-evidence-icon evidence-insufficient">!</div>
                     </td>
+                    <td class="responsibility-cell limited-responsibility" data-evidence="insufficient">
+                        Limited responsibility
+                        <div class="cell-evidence-icon evidence-insufficient">!</div>
+                    </td>
                     <td class="responsibility-cell primary-responsibility" data-evidence="no-consensus">
                         Primary responsibility
                         <div class="cell-evidence-icon evidence-no-consensus">~</div>
@@ -1129,6 +1251,10 @@
                             <div class="definition-header">7.6 Multi-agent risks</div>
                             Risks from multi-agent interactions, due to incentives (which can lead to conflict or collusion) and/or the structure of multi-agent systems, which can create cascading failures, selection pressures, new security vulnerabilities, and a lack of shared information and trust.
                         </div>
+                    </td>
+                    <td class="responsibility-cell shared-responsibility" data-evidence="consensus">
+                        Shared responsibility
+                        <div class="cell-evidence-icon evidence-consensus">✓</div>
                     </td>
                     <td class="responsibility-cell shared-responsibility" data-evidence="consensus">
                         Shared responsibility
